@@ -1,0 +1,52 @@
+.tagchecklist > span {
+    padding-right: 5px;
+    background-image: linear-gradient(to right, #e4ff00, #e4ff00 50%, transparent 50%, transparent);
+    background-position: 100% 0;
+    background-size: 200% 100%;
+    transition: all .2s ease-in;
+}
+.tagchecklist > span.highlight {
+    background-position: 0 0;
+}
+#datag {
+
+}
+#datag span {
+    height: 16px;
+    width: 16px;
+    margin-right: 12px;
+    display: inline-block;
+    position: relative;
+    background-color: yellow;
+    border-radius: 10px;
+    vertical-align: super;
+    border: thin solid #6F6F11;
+}
+#datag span::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 18px;
+    height: 18px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: thin solid #737373;
+}
+#datag span.cancel {
+    background-color: gray;
+}
+#datag span.cancel::after {
+    content: "";
+    font-family: monospace;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 16px;
+    height: 16px;
+}
+#datag p.howto {
+    width: 80%;
+    display: inline-block;
+}
