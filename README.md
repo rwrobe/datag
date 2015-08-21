@@ -8,27 +8,27 @@ Da Tag includes two template tags: `datag_get_tag()` and `datag_the_tag()`. `dat
 
 Simply use one or the other of these functions where you would like to display or use the highlighted tag in your theme. Don't forget to wrap them in an `if( function_exists() )` test!
 
-## Changelog (Time is cumulative)
+## Changelog
 
-### v1.0 (03:00:00)
+### v1.0
 
 * Added the template-tags file to the main plugin file and tested 
 
-### v0.4 (02:30:00)
+### v0.4
 
 * Revised and renamed temp_append()
 * Built out the draggable/droppable JS
 * Created a hidden field and hooked into post_submitbox_misc_actions to hold the highlighted tag
 * Style tweaks
 
-### v0.3 (01:50:00)
+### v0.3
 
 * Added a temporary function to append the tag selector droplet to the Tags metabox
 * Styled the droplet, howto text, highlighted tag
 * Added admin notices, clear the user meta on deactivation
 * Still searching for the filter to add this to the tag metabox without having to use JS
 
-### v0.2 (01:00:00)
+### v0.2
 
 * Added directories for the CSS, JS, classes and includes
 * Created mostly-empty CSS file for the styles
@@ -38,6 +38,6 @@ Simply use one or the other of these functions where you would like to display o
 * Created template tags to return and echo the tag name for use in a theme
 * Removed some of the unnecessary bits and bobs from the WP-CLI scaffolding, including unit testing apparatus
 
-### v0.1 (00:02:00)
+### v0.1
 
 * Scaffolded the plugin using WP-CLI
