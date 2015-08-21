@@ -109,7 +109,7 @@ if( ! class_exists( 'Da_Tag' ) ) {
 			/** If the meta isn't there, they must like the notice. That makes me feel happy. */
 			if ( ! get_user_meta( $uid, 'thanks_but_no_thanks') ) {
 
-				$notice = __('Hey there, thanks for taking a look at my highlighted tag plugin! Please let me know if you have any questions: <a href="mailto:RobSWard@gmail.com">RobSWard@gmail.com</a>', $this->localizationDomain);
+				$notice = __('Hey there, thanks for taking a look at my highlighted tag plugin! Please let me know if you have any questions: <a href="mailto:rwrobe@gmail.com">rwrobe@gmail.com</a>', $this->localizationDomain);
 
 				printf('<div class="updated"><p>%1$s <br /><br /> <a href="%2$s">Got it, thanks.</a></p></div>',
 					wp_kses_post($notice),
