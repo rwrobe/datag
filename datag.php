@@ -11,16 +11,20 @@ Domain Path: /languages
 
 /** @package datag */
 
-/** @var $url string    The path to the plugin, for use in our class */
-$thispluginurl = WP_PLUGIN_URL . '/' . dirname( plugin_basename( __FILE__ ) ) . '/';
+if ( ! defined( 'DT_BASE_FILE' ) )
+	define( 'DT_BASE_FILE', __FILE__ );
+if ( ! defined( 'DT_BASE_DIR' ) )
+	define( 'DT_BASE_DIR',  WP_PLUGIN_URL . '/' . dirname( plugin_basename( DT_BASE_FILE ) ) );
+if ( ! defined( 'DT_PLUGIN_URL' ) )
+	define( 'DT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+if ( ! defined( 'DT_PLUGIN_PATH' ) )
+	define( 'DT_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+
 
 /** Require the DT class */
 require_once( 'class/dt.class.php' );
 /** Add in the template tags */
 require_once( 'inc/template-tags.php' );
-
-/** @var $dt object Instantiation of our class */
-$dt = new wardrobe\Da_Tag( $thispluginurl );
 
 /** If for some reason you'd like to see the admin notice again, well, here you go. */
 register_deactivation_hook( __FILE__, array( 'wardrobe\Da_Tag', 'prodigal_admin_notices' ) );
