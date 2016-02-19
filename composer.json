@@ -3,8 +3,12 @@
     "description": "Da Tag allows you to highlight any tag for a given post and make it available for your theme! You will see the highlighter in the tags metabox after activating the plugin.",
     "type": "wordpress-plugin",
     "require": {
-	"php": ">=5.3.2",
+	    "php": ">=5.3.2",
         "composer/installers": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "10up/wp_mock": "dev-master"
     },
     "license": "GPL",
     "authors": [

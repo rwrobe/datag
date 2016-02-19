@@ -18,19 +18,17 @@ class Da_Tag {
 	/** @var string $thispluginurl      For the URL of the plugin (set in constructor) */
 	private $thispluginurl 		= '';
 
-	public function __construct( $thispluginurl ) {
+	public function __construct( $plugin_dir ) {
+		$this->thispluginurl  = $plugin_dir . '/';
+	}
 
-		$this->thispluginurl  = DT_PLUGIN_URL;
-
-		/** Add Actions and Filters */
-		// Admin Notices
+	public function init(){
 		add_action( 'admin_notices', array( &$this, 'admin_notices' ), 10, 1 );
 		add_action( 'admin_init', array( &$this, 'admin_notices_ignore' ) );
-
-		add_filter( 'post_submitbox_misc_actions', array( &$this, 'highlight_tag' ) );
 		add_action( 'save_post', array( &$this, 'save_highlighted_tag' ), 10, 3 );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'enqueues' ) );
 
+		add_filter( 'post_submitbox_misc_actions', array( &$this, 'highlight_tag' ) );
 	}
 
 	/**
@@ -40,14 +38,11 @@ class Da_Tag {
 	 * @param string $hook  Editor page being accessed
 	 */
 	public function enqueues( $hook ){
-
-
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'jquery-ui-droppable' );
 		wp_enqueue_script( 'datag_functions', $this->thispluginurl . 'js/dt_functions.js', array( 'jquery', 'jquery-ui-droppable' ), '1.0', true );
 
 		wp_enqueue_style( 'datag-style', $this->thispluginurl . 'css/datag.css' );
-
 	}
 
 	/**
@@ -62,12 +57,11 @@ class Da_Tag {
 
 		global $post;
 
+		/** Adding the nonce field to this hidden input */
 		wp_nonce_field( basename( __FILE__ ), 'ht_nonce' );
 		$highlight_tag = get_post_meta( $post->ID, '_datag_highlighted_tag', true );
 		?>
-
 		<input type="hidden" name="highlight_tag" id="highlight-tag" value="<?php echo isset ( $highlight_tag ) ? esc_attr( $highlight_tag ) : ''; ?>" />
-
 		<?php
 	}
 
@@ -83,6 +77,8 @@ class Da_Tag {
 		/** Check save status */
 		$is_autosave = wp_is_post_autosave( $post_id );
 		$is_revision = wp_is_post_revision( $post_id );
+
+		/** @var $is_valid_nonce    Checks the nonce ws correct and not expired. */
 		$is_valid_nonce = ( isset( $_POST[ 'ht_nonce' ] ) && wp_verify_nonce( $_POST[ 'ht_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
 
 		/** Bail if any of the above are true (or false, for the nonce) */
@@ -149,5 +145,3 @@ class Da_Tag {
 
 	}
 }
-
-$dt = new Da_Tag();

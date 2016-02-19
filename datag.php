@@ -9,6 +9,7 @@ Text Domain: datag
 Domain Path: /languages
 */
 
+
 /** @package datag */
 
 if ( ! defined( 'DT_BASE_FILE' ) )
@@ -22,7 +23,11 @@ if ( ! defined( 'DT_PLUGIN_PATH' ) )
 
 
 /** Require the DT class */
-require_once( 'class/dt.class.php' );
+require_once( 'class/Da_Tag.php' );
+
+$dt = new \notne\Da_Tag\Da_Tag( DT_BASE_DIR );
+$dt->init();
+
 /** Add in the template tags */
 require_once( 'inc/template-tags.php' );
 
